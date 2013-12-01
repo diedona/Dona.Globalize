@@ -15,6 +15,7 @@ namespace Dona.Globalize.Domain
         [Display(Name = "Nome")]
         public string Name { get; set; }
         [Required]
+        [DataType(DataType.Currency)]
         [Display(Name = "Preço")]
         public decimal Price { get; set; }
         public DateTime DtInsert { get; set; }

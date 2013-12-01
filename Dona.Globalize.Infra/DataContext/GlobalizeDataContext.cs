@@ -10,7 +10,7 @@ namespace Dona.Globalize.Infra.DataContext
 {
     public class GlobalizeDataContext : DbContext
     {
-        public GlobalizeDataContext() : base("Globalize")
+        public GlobalizeDataContext()
         {
 
         }

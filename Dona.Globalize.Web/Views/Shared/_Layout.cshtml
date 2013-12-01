@@ -44,8 +44,9 @@
     <script>
 
         $.validator.methods.number = function (value, element) {
+            var val = Globalize.parseFloat(value);
             return this.optional(element) ||
-                !isNaN(Globalize.parseFloat(value));
+                (val);
         }
 
         $.validator.methods.date = function (value, element) {
