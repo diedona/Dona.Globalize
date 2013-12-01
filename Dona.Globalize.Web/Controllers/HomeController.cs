@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Data.Entity;
+using Dona.Globalize.Domain;
 
 namespace Dona.Globalize.Web.Controllers
 {
@@ -30,6 +31,41 @@ namespace Dona.Globalize.Web.Controllers
         public ActionResult CreatePerson()
         {
             return View();
+        }
+
+        [HttpPost]
+        public ActionResult CreateProduct(Product model)
+        {
+            if(!ModelState.IsValid)
+            {
+                return View();
+            }
+
+            model.Status = true;
+            model.DtInsert = DateTime.Now;
+            model.DtLastUpdate = DateTime.Now;
+
+            _db.Products.Add(model);
+            _db.SaveChanges();
+
+            return RedirectToAction("Index");
+        }
+        [HttpPost]
+        public ActionResult CreatePerson(Person model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
+
+            model.Status = true;
+            model.DtInsert = DateTime.Now;
+            model.DtLastUpdate = DateTime.Now;
+
+            _db.People.Add(model);
+            _db.SaveChanges();
+
+            return RedirectToAction("Index");
         }
     }
 }
