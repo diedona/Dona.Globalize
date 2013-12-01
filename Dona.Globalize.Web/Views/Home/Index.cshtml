@@ -1,4 +1,6 @@
-﻿@{
+﻿@model IEnumerable<Dona.Globalize.Domain.Product>
+
+@{
     ViewBag.Title = "Listagem";
 }
 
@@ -8,10 +10,39 @@
 </div>
 
 <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-12">
+        <a href="@Url.Action("Create", "Home")" class="btn btn-info btn-sm pull-right">Novo</a>
         <h2>Produtos Cadastrados</h2>
+    </div>
+</div>
 
-
+<div class="row">
+    <div class="col-md-12">
+        <table class="table table-striped">
+            <tr>
+                <td>Id</td>
+                <td>Nome</td>
+                <td>Preço</td>
+                <td>Data de Cadastro</td>
+            </tr>
+            @foreach(var p in Model)
+            {
+                <tr>
+                    <td>
+                        @p.Id
+                    </td>
+                    <td>
+                        @p.Name
+                    </td>
+                    <td>
+                        @p.Price
+                    </td>
+                    <td>
+                        @p.DtInsert.ToShortDateString()
+                    </td>
+                </tr>
+            }
+        </table>
 
     </div>
 </div>
