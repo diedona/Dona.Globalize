@@ -8,15 +8,19 @@ using System.Threading.Tasks;
 
 namespace Dona.Globalize.Domain
 {
-    public class Product : IEntity
+    public class Person : IEntity
     {
         public int Id { get; set; }
         [Required]
         [Display(Name = "Nome")]
         public string Name { get; set; }
         [Required]
-        [Display(Name = "Preço")]
-        public decimal Price { get; set; }
+        [Display(Name = "Descrição")]
+        public string Description { get; set; }
+        [Required]
+        [Display(Name = "Data Nascimento")]
+        [DataType(DataType.Date)]
+        public DateTime DtBirthday { get; set; }
         public DateTime DtInsert { get; set; }
         public DateTime DtLastUpdate { get; set; }
         public bool Status { get; set; }

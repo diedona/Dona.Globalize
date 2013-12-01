@@ -10,11 +10,12 @@ namespace Dona.Globalize.Infra.DataContext
 {
     public class GlobalizeDataContext : DbContext
     {
-        public GlobalizeDataContext()
+        public GlobalizeDataContext() : base("Globalize")
         {
 
         }
 
         public DbSet<Product> Products { get; set; }
+        public DbSet<Person> People { get; set; }
     }
 }

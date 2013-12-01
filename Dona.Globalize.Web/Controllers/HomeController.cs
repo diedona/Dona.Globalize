@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using System.Linq;
 using System.Data.Entity;
 
 namespace Dona.Globalize.Web.Controllers
@@ -19,10 +18,16 @@ namespace Dona.Globalize.Web.Controllers
         }
         public ActionResult Index()
         {
-            return View(_db.Products.OrderBy(x => x.DtInsert).ToList());
+            ViewBag.People = _db.People.ToList();
+            ViewBag.Products = _db.Products.ToList();
+            return View();
         }
 
-        public ActionResult Create()
+        public ActionResult CreateProduct()
+        {
+            return View();
+        }
+        public ActionResult CreatePerson()
         {
             return View();
         }

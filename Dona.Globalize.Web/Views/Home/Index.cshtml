@@ -1,7 +1,7 @@
-﻿@model IEnumerable<Dona.Globalize.Domain.Product>
-
-@{
+﻿@{
     ViewBag.Title = "Listagem";
+    List<Dona.Globalize.Domain.Person> People = (List<Dona.Globalize.Domain.Person>)ViewBag.People;
+    List<Dona.Globalize.Domain.Product> Products = (List<Dona.Globalize.Domain.Product>)ViewBag.Products;
 }
 
 <div class="jumbotron">
@@ -10,22 +10,26 @@
 </div>
 
 <div class="row">
-    <div class="col-md-12">
-        <a href="@Url.Action("Create", "Home")" class="btn btn-info btn-sm pull-right">Novo</a>
+    <div class="col-md-6">
+        <a href="@Url.Action("CreateProduct", "Home")" class="btn btn-info pull-right">Novo Produto</a>
         <h2>Produtos Cadastrados</h2>
+    </div>
+    <div class="col-md-6">
+        <a href="@Url.Action("CreatePerson", "Home")" class="btn btn-info pull-right">Nova Pessoa</a>
+        <h2>Pessoas Cadastradas</h2>
     </div>
 </div>
 
 <div class="row">
-    <div class="col-md-12">
-        <table class="table table-striped">
+    <div class="col-md-6">
+        <table class="table table-striped table-hover">
             <tr>
                 <td>Id</td>
                 <td>Nome</td>
                 <td>Preço</td>
                 <td>Data de Cadastro</td>
             </tr>
-            @foreach(var p in Model)
+            @foreach (var p in Products)
             {
                 <tr>
                     <td>
@@ -39,6 +43,35 @@
                     </td>
                     <td>
                         @p.DtInsert.ToShortDateString()
+                    </td>
+                </tr>
+            }
+        </table>
+
+    </div>
+
+    <div class="col-md-6">
+        <table class="table table-striped table-hover">
+            <tr>
+                <td>Id</td>
+                <td>Nome</td>
+                <td>Aniversário</td>
+                <td>Descrição</td>
+            </tr>
+            @foreach (var p in People)
+            {
+                <tr>
+                    <td>
+                        @p.Id
+                    </td>
+                    <td>
+                        @p.Name
+                    </td>
+                    <td>
+                        @p.DtBirthday.ToShortDateString()
+                    </td>
+                    <td>
+                        @p.Description
                     </td>
                 </tr>
             }
